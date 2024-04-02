@@ -1,31 +1,52 @@
 // Retrieve tasks and nextId from localStorage
 let taskList = JSON.parse(localStorage.getItem("tasks"));
 let nextId = JSON.parse(localStorage.getItem("nextId"));
-var myModal = document.getElementById('myModal')
-var myInput = document.getElementById('myInput')
+const taskEl = document.getElementById('inputTask')
+const dateEl = document.getElementById('inputDate')
+const descriptionEl = document.getElementById('inputDescription')
+const taskContainer = document.getElementById('taskContainer')
 
-myModal.addEventListener('shown.bs.modal', function () {
-  myInput.focus()
-})
+// const taskList = []
 
-// Todo: create a function to generate a unique task id
-function generateTaskId() {
-
+// // Todo: create a function to generate a unique task id
+// function generateTaskId() {
+    
+    //     //create element
+    //     const 
+    //     //add content
+    
+    //     //append element
+    // }
+    
+    // Todo: create a function to create a task card
+    function createTaskCard() {
+    const task = {
+        name: taskEl.val, 
+        date: dateEl.val, 
+        description: descriptionEl.val
+    }
+   
     //create element
-    const 
+    const taskCard = document.createElement('div')
+    const taskEl = document.createElement('h2')
+    const dateEl = document.createElement('p')
+    const descriptionEl = document.createElement('p')
+    
     //add content
-
+    taskEl.textContent = taskCard.taskEl
+    dateEl.textContent = taskCard.dateEl
+    descriptionEl.textContent = taskCard.descriptionEl
+    
     //append element
-}
-
-// Todo: create a function to create a task card
-function createTaskCard(task) {
+    taskContainer.appendChild(taskCard)
+    taskCard.appendChild(taskEl, dateEl, descriptionEl)
 
 }
+createTaskCard(task)
 
 // Todo: create a function to render the task list and make cards draggable
 function renderTaskList() {
-
+//for loop
 }
 
 // Todo: create a function to handle adding a new task
@@ -51,8 +72,8 @@ $(document).ready(function () {
 });
 
 
-// create modal in HTML
-// create an object within the modal (task title, task due date, task description) CSS
+// create modal in HTML - done
+// create an object within the modal (task title, task due date, task description)
 //within task due day add calender mm/dd/yyyy format 
 //save object to local storage? to get to display under proper column 
 //create drag and drop (where?)

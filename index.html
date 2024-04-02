@@ -55,31 +55,30 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div>
-              <form class="row g-3 p-4">
+              <form id="taskContainer" class="row g-3 p-4">
                 <header>
                   <h3>Add Task</h3>
                 </header>
                 <div class="col-md-6">
-                  <label for="inputEmail4" class="form-label">Task Title</label>
-                  <input type="email" class="form-control" id="inputEmail4" />
+                  <label for="inputTask" class="form-label">Task Title</label>
+                  <input type="text" class="form-control" id="inputTask" />
                 </div>
                 <div class="col-md-6">
-                  <label for="inputPassword4" class="form-label"
+                  <label for="inputDate" class="form-label"
                     >Task Due Date</label
                   >
                   <input
                     type="date"
                     class="form-control"
-                    id="inputDate4"
+                    id="inputDate"
                   />
                 </div>
                 <div class="col-12">
-                  <label for="inputAddress" class="form-label"
+                  <label for="inputDescription" class="form-label"
                     >Task Description</label
                   >
-                  <input type="text" class="form-control" id="inputAddress" />
+                  <input type="text" class="form-control" id="inputDescription" />
                 </div>
-
                 <div class="col-12">
                   <button type="submit" class="btn btn-primary">
                     Add Task

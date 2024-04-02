@@ -7,14 +7,10 @@ body {
   min-height: 60vh;
 }
 
-.task-card {
+#taskContainer {
   margin: 0 auto;
 }
 
-.task-card:hover {
+#taskContainer:hover {
   cursor: grab;
-}
-
-.modal-dialog {
-  padding: px;
 }
