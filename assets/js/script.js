@@ -1,83 +1,107 @@
 // Retrieve tasks and nextId from localStorage
-let taskList = JSON.parse(localStorage.getItem("tasks"));
+let taskList = JSON.parse(localStorage.getItem("tasks")) || [];
 let nextId = JSON.parse(localStorage.getItem("nextId"));
-const taskEl = document.getElementById('inputTask')
-const dateEl = document.getElementById('inputDate')
-const descriptionEl = document.getElementById('inputDescription')
-const taskContainer = document.getElementById('taskContainer')
+const titleEl = $("#inputTask");
+const dueDateEl = $("#inputDueDate");
+const descriptionEl = $("#inputDescription");
+const cardContainer = $("#todo-cards");
+const addTaskButton = $("#add-task-btn");
+const task = {
+  title: titleEl.val(),
+  dueDate: dueDateEl.val(),
+  description: descriptionEl.val(),
+};
 
-// const taskList = []
+// Todo: create a function to generate a unique task id
+function generateTaskId() {
+  // check if the nextId exists in localStroage. if it doesnt make nextId = 1
+  if (nextId === null) {
+    nextId = 1;
+  } else {
+    // if it does increase the nextId by 1
+    nextId++;
+  }
+  // store nextId in local storage
+  localStorage.setItem("nextId", JSON.stringify(nextId));
 
-// // Todo: create a function to generate a unique task id
-// function generateTaskId() {
-    
-    //     //create element
-    //     const 
-    //     //add content
-    
-    //     //append element
-    // }
-    
-    // Todo: create a function to create a task card
-    function createTaskCard() {
-    const task = {
-        name: taskEl.val, 
-        date: dateEl.val, 
-        description: descriptionEl.val
-    }
-   
-    //create element
-    const taskCard = document.createElement('div')
-    const taskEl = document.createElement('h2')
-    const dateEl = document.createElement('p')
-    const descriptionEl = document.createElement('p')
-    
-    //add content
-    taskEl.textContent = taskCard.taskEl
-    dateEl.textContent = taskCard.dateEl
-    descriptionEl.textContent = taskCard.descriptionEl
-    
-    //append element
-    taskContainer.appendChild(taskCard)
-    taskCard.appendChild(taskEl, dateEl, descriptionEl)
-
+  return nextId;
 }
-createTaskCard(task)
+
+// Todo: create a function to create a task card
+function createTaskCard(userObj) {
+  const taskCard = $("<div>").addClass("task-card");
+  taskCard.attr("id", userObj.id);
+  const titleEl = $("<h2>");
+  titleEl.text(userObj.title);
+  const dueDateEl = $("<p>");
+  dueDateEl.text(userObj.dueDate);
+  const descriptionEl = $("<p>");
+  descriptionEl.text(userObj.description);
+  const delBtn = $(
+    `<button type="button" class="btn btn-danger data-id="${userObj.id}">Delete</button>`
+  );
+
+  taskCard.append(titleEl, dueDateEl, descriptionEl, delBtn);
+  cardContainer.append(taskCard);
+
+  //if else conditional using status key value pair on object, need variables referencing id's on cards
+
+  return taskCard;
+}
+
+// const taskCard = createTaskCard(userObj);
+// $(cardContainer).append(taskCard);
 
 // Todo: create a function to render the task list and make cards draggable
-function renderTaskList() {
-//for loop
+function renderTaskList(task) {
+  //   $("taskList");
 }
 
-// Todo: create a function to handle adding a new task
-function handleAddTask(event){
-    const addTaskEl = getElementById('addTaskBtn'); 
+//{
+//   taskList.forEach(function (task) {
+//       createTaskCard(task);
 
-    addTaskEl.addEventListener('click', )
+//   });
+// }
+
+// Todo: create a function to handle adding a new task
+function handleAddTask(event) {
+  event.preventDefault();
+  // create an object that stores the following: id, title, dueDate, description, status: to-do
+
+  //   const userObj = {
+  // Todo: create a function to handle adding a new task
+  // id: function handleAddTask(event) {
+  //   event.preventDefault();
+  // create an object that stores the following: id, title, dueDate, description, status: to-do
+
+  const taskId = generateTaskId();
+
+  const userObj = {
+    id: taskId,
+    title: $("#inputTask").val(),
+    duedate: $("#inputDate").val(),
+    description: $("#inputDescription").val(),
+    status: "to-do",
+  };
+
+  // added the newly created obj into taskList
+  taskList.push(userObj);
+
+  // save tasklist to localStorage
+  localStorage.setItem("tasks", JSON.stringify(taskList));
+  createTaskCard(userObj);
+  location.reload();
 }
 
 // Todo: create a function to handle deleting a task
-function handleDeleteTask(event){
-
-}
+function handleDeleteTask(event) {}
 
 // Todo: create a function to handle dropping a task into a new status lane
-function handleDrop(event, ui) {
-
-}
-
+function handleDrop(event, ui) {}
+// $(.lane) -- changes status based on lane conditional and for of (loops through array to determine which has id that matches then finds that id within the array andchanges status from this to that)
 // Todo: when the page loads, render the task list, add event listeners, make lanes droppable, and make the due date field a date picker
 $(document).ready(function () {
-
+  //   renderTaskList();
+  $(addTaskButton).on("submit", handleAddTask);
 });
-
-
-// create modal in HTML - done
-// create an object within the modal (task title, task due date, task description)
-//within task due day add calender mm/dd/yyyy format 
-//save object to local storage? to get to display under proper column 
-//create drag and drop (where?)
-//create styling for dates in the past
-//create styling for objects indidually
-//create a delete button on object 
-//cards for objects 

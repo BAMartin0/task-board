@@ -58,29 +58,34 @@
               <form id="taskContainer" class="row g-3 p-4">
                 <header>
                   <h3>Add Task</h3>
+                  
                 </header>
                 <div class="col-md-6">
                   <label for="inputTask" class="form-label">Task Title</label>
                   <input type="text" class="form-control" id="inputTask" />
                 </div>
                 <div class="col-md-6">
-                  <label for="inputDate" class="form-label"
+                  <label for="inputDueDate" class="form-label"
                     >Task Due Date</label
                   >
-                  <input
-                    type="date"
-                    class="form-control"
-                    id="inputDate"
-                  />
+                  <input type="date" class="form-control" id="inputDate" />
                 </div>
                 <div class="col-12">
                   <label for="inputDescription" class="form-label"
                     >Task Description</label
                   >
-                  <input type="text" class="form-control" id="inputDescription" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputDescription"
+                  />
                 </div>
                 <div class="col-12">
-                  <button type="submit" class="btn btn-primary">
+                  <button
+                    id="add-task-btn"
+                    type="submit"
+                    class="btn btn-primary"
+                  >
                     Add Task
                   </button>
                 </div>
@@ -97,7 +102,9 @@
               <h2 class="card-title mb-1">To Do</h2>
             </div>
             <div class="card-body bg-light">
-              <div id="todo-cards"></div>
+              <div id="todo-cards">
+
+              </div>
             </div>
           </div>
         </div>
